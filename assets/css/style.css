@@ -1,3 +1,5 @@
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -17,6 +19,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	font-family: 'Rosario', sans-serif;
+	/*font-size: 1.5rem;*/
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -54,27 +58,105 @@ input, textarea{
 
 
 /*******************fin du reset********************/
+@import url('https://fonts.googleapis.com/css?family=Gentium+Basic|Rosario&display=swap');
+/******************* taille body ********************/
+
+#body
+{
+display:flex;
+flex-direction: column;
+justify-content: center;
+width: 100vw;
+height: 100vh;
+/* font-family: 'Gentium Basic', serif; */
+font-family: 'Rosario', sans-serif;
 
 
+}
+
+/*******************  header ********************/
+header
+{
+position: absolute ;
+top: 5%;
+left: 5%;
+
+}
+img
+{
+width: 200px;
+height: 200px;
+
+}
 
 
-
-
+/*******************  formulaire ********************/
 .formulaire
 {
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	grid-template-rows:  repeat(3,1fr);
 	max-width: 350px;
+
 	margin:auto;
 	padding: 25px;
-    background-color: lightgray;
+    background-color:#282749;
     border-color: gray;
-    border: 1px solid #ccc;
+    border: 1px solid #282749;
     border-radius: 7px;
-    opacity: 0.7;
+	opacity: 0.91;
+	font-family: 'Rosario', sans-serif;
+	font-size: 1.3rem !important;
+	line-height: 2.5;
+}
+form
+{
+	
+}
+.label-file {
+cursor: pointer;
+color: #f2e079;	
 }
 
+span
+{
+grid-column: 2/3 ;
+grid-row: 1/2;
+color: #c27abc ;
+font-weight:bold;
+}
+
+.label-file:hover {
+color: #887e09;
+}
+
+.transfer__button 
+{
+font-size: 1.3rem !important;
+font-family: 'Rosario', sans-serif;
+border-radius: 5px ;
+border : none;
+padding: 10px 15px;
+background: linear-gradient( to bottom left, #8b2e83, #c27abc );
+position: relative;
+left: 33%;
+
+
+}
+
+
+.input-file {
+    display: none;
+}
+/******************* footer ********************/
 #footer{
 	text-align: center;
-	background: #998B7D;
+	background:#282749;
 	width: 100%;
 	height: 100px;
+	position: absolute;
+	bottom: 0;
+
+	
 }
+
