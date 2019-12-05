@@ -5,5 +5,5 @@ if(isset($_GET['page']) && !empty($_GET['page'])) {
 else {
     $page = 'envoi';
 }
-$page = ucfirst($page);
+
 include('Controllers/'.$page.'Controller.php');
