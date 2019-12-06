@@ -64,6 +64,7 @@ if (isset($_FILES['fichier'])) {
     }
 }
 
+
 mail($destinataires, $sujet, $message);
 echo "<html></html>" ;
 
