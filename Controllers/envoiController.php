@@ -60,7 +60,7 @@ if (isset($_FILES['fichier'])) {
             $file_name = hash("md5", $name) . "." . pathinfo($name)['extension'];
             move_uploaded_file($tmp_name, $uploads_dir . "/" . $file_name);
             // recuperer l'url
-
+            echo ="ytr";
         };
 
         }
@@ -68,12 +68,14 @@ if (isset($_FILES['fichier'])) {
         $url = "https://khaoulaa.promo-31.codeur.online/ProjetBirdypage=reception&download=/".$name;
        
         // preparer le mail
+        if (isset($_POST["mail_dest"])){
 
-        // $destinataire = $_POST["mail_dest"];
-        // $expediteur = $_POST["mail_exp"];
-        // $message_user = $_POST["message"];
-        // $headers = 'From:'. $expediteur."\r\n".'Reply-To:'. $expediteur;
-        $message = $message_user.'<!doctype html>
+        $destinataire = $_POST["mail_dest"];
+        $expediteur = $_POST["mail_exp"];
+        $message_user = $_POST["message"];
+        $headers = 'From:'. $expediteur."\r\n".'Reply-To:'. $expediteur;
+        $message = $message_user.
+        '<!doctype html>
         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
         
         <head>
@@ -358,7 +360,8 @@ if (isset($_FILES['fichier'])) {
         
         </html>';
         $sujet = "Envoi de fichier";
-        // mail($destinataire, $sujet, $message, $headers);
+        mail($destinataire, $sujet, $message, $headers);
+    }
     }
 
  

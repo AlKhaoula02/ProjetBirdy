@@ -8,7 +8,7 @@ include 'header.php';
 
         <div class="formulaire">             
                 <span>Transférer : </span> 
-                <form method="post" action="index.php?page=envoi" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data">
                   <div class ="labels">
                         <label for="file" class="label-file" onclick="reset()"> Un fichier</label>
                         <input required id="file" class="input-file" type="file" multiple="" name="fichier[]" ><br/>
@@ -25,7 +25,7 @@ include 'header.php';
             
             </div>
             
-                <label for="button" class="transfer__button transfer__button--inactive" onclick="show_list()">Envoyer</label>
+                <label for="button" class="transfer__button" onclick="show_list()">Envoyer</label>
                 <input type="submit" id="button" class="input-file" >
                 </form>        
             </div>
