@@ -95,7 +95,7 @@ height: 40%;
 {
 	display: grid;
 	grid-template-columns: repeat(3,1fr);
-	grid-template-rows:  repeat(3,1fr);
+	grid-template-rows:  repeat(7,1fr);
 	max-width: 25%;
 	height:50%;
 	margin:auto;
@@ -110,35 +110,6 @@ height: 40%;
 	line-height: 2.5;
 	box-shadow: 2px -2px 2px #f2e079 ;
 }
-form
-{
-display: grid;
-grid-template-columns: repeat(3,1fr);
-grid-template-rows:  repeat(2,1fr);
-grid-column: 1/4;
-grid-row: 2/4;
-
-}
-
-.label-file
- {
-cursor: pointer;
-color: #f2e079;
-border: solid 1px  #f2e079 ;
-margin: 15px 30px;
-border-radius: 5px;
-padding: 0 5px;
-
-}
-
-.labels
-{
-grid-column: 1/4;
-grid-row: 1/2;
-display :flex;
-justify-content: center;
-}
-
 span
 {
 grid-column: 2/3 ;
@@ -150,26 +121,85 @@ color: #c27abc ;
 font-weight:bold;
 }
 
+
+form
+{
+display: grid;
+grid-template-columns: repeat(3,1fr);
+grid-template-rows:  repeat(7,1fr);
+grid-column: 1/4;
+grid-row: 2/8;
+}
+
+.label-file
+ {
+cursor: pointer;
+color: #f2e079;
+border: solid 1px  #f2e079 ;
+margin: 15px 30px;
+border-radius: 5px;
+padding: 0 10px;
+
+}
+
+.labels
+{
+grid-column: 1/4;
+grid-row:1/2;
+display :flex;
+justify-content: center;
+}
+
+
 .label-file:hover {
 color: #887e09;
 border: solid 1px #887e09;
 }
 
+/* champs a remplir par user*/
+
+#champs
+{
+grid-column: 1/4;
+grid-row: 2/7 ;
+font-size: 1.1rem;
+color:#f2e079 ;
+width:80%;
+justify-self: center;
+}
+
+.input_content
+{
+	width: 65%;
+	margin:5px;
+}
+
+
+#mail_info
+{
+	grid-column: 1/4 ;
+	grid-row: 4/6;
+}
+textarea
+{
+resize: none;
+width: 100%;
+height: 30%;
+margin:5px;
+}
+
 .transfer__button 
 {
 grid-column:2/3;
-grid-row: 2/3;
-font-size: 1.3rem !important;
+grid-row: 8/8;
+font-size: 1.1rem !important;
 font-family: 'Rosario', sans-serif;
 border-radius: 5px ;
 border : none;
-padding: 10px 15px;
 background: linear-gradient( to bottom left, #8b2e83, #c27abc );
-height: 50%;
+padding:  0 20%;
 text-align:center;
-display: flex;
-justify-content: center;
-align-content: center;
+justify-self: center;
 
 
 }
