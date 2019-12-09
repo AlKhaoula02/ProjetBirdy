@@ -63,8 +63,6 @@ if (isset($_FILES['fichier'])) {
 
         };
 
-        }
-
         $url = "https://khaoulaa.promo-31.codeur.online/ProjetBirdypage=reception&download=/".$name;
        
         // preparer le mail
