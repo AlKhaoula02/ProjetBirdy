@@ -363,5 +363,4 @@ if (isset($_FILES['fichier'])) {
 
 
 
-
 require('Views/envoiView.php');

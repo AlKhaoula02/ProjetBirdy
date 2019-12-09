@@ -84,8 +84,8 @@ left: 5%;
 }
 img
 {
-width: 200px;
-height: 200px;
+width: 40%;
+height: 40%;
 
 }
 
@@ -95,9 +95,9 @@ height: 200px;
 {
 	display: grid;
 	grid-template-columns: repeat(3,1fr);
-	grid-template-rows:  repeat(3,1fr);
-	max-width: 350px;
-
+	grid-template-rows:  repeat(7,1fr);
+	max-width: 25%;
+	height:50%;
 	margin:auto;
 	padding: 25px;
     background-color:#282749;
@@ -108,38 +108,98 @@ height: 200px;
 	font-family: 'Rosario', sans-serif;
 	font-size: 1.3rem !important;
 	line-height: 2.5;
+	box-shadow: 2px -2px 2px #f2e079 ;
 }
-form
-{
-	
-}
-.label-file {
-cursor: pointer;
-color: #f2e079;	
-}
-
 span
 {
 grid-column: 2/3 ;
 grid-row: 1/2;
+align-self: center;
+justify-self: center;
 color: #c27abc ;
+
 font-weight:bold;
 }
 
+
+form
+{
+display: grid;
+grid-template-columns: repeat(3,1fr);
+grid-template-rows:  repeat(7,1fr);
+grid-column: 1/4;
+grid-row: 2/8;
+}
+
+.label-file
+ {
+cursor: pointer;
+color: #f2e079;
+border: solid 1px  #f2e079 ;
+margin: 15px 30px;
+border-radius: 5px;
+padding: 0 10px;
+
+}
+
+.labels
+{
+grid-column: 1/4;
+grid-row:1/2;
+display :flex;
+justify-content: center;
+}
+
+
 .label-file:hover {
 color: #887e09;
+border: solid 1px #887e09;
+}
+
+/* champs a remplir par user*/
+
+#champs
+{
+grid-column: 1/4;
+grid-row: 2/7 ;
+font-size: 1.1rem;
+color:#f2e079 ;
+width:80%;
+justify-self: center;
+}
+
+.input_content
+{
+	width: 65%;
+	margin:5px;
+}
+
+
+#mail_info
+{
+	grid-column: 1/4 ;
+	grid-row: 4/6;
+}
+textarea
+{
+resize: none;
+width: 100%;
+height: 30%;
+margin:5px;
 }
 
 .transfer__button 
 {
-font-size: 1.3rem !important;
+grid-column:2/3;
+grid-row: 8/8;
+font-size: 1.1rem !important;
 font-family: 'Rosario', sans-serif;
 border-radius: 5px ;
 border : none;
-padding: 10px 15px;
 background: linear-gradient( to bottom left, #8b2e83, #c27abc );
-position: relative;
-left: 33%;
+padding:  0 20%;
+text-align:center;
+justify-self: center;
 
 
 }
@@ -148,15 +208,89 @@ left: 33%;
 .input-file {
     display: none;
 }
+
+/******************** liste des  dossiers prêts à l'envoi ***********************/
+#list_files
+{
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+ 	width: 25%;
+	max-height : auto;
+	margin:auto;
+	padding: 25px;
+    background-color:#282749;
+    border-color: gray;
+    border: 1px solid #282749;
+    border-radius: 7px;
+	opacity: 0.91;
+	font-family: 'Rosario', sans-serif;
+	font-size: 1.3rem !important;
+	line-height: 2.5;
+	box-shadow: 2px -2px 2px #f2e079 ;	
+	position: fixed;
+	top:10%;
+	right:5%;
+}
+	
+.title_list
+{
+	display: grid;
+	grid-column: 1/4;
+	font-size: 1.3rem; 
+	
+}
+
+#p
+{	
+	grid-column: 1/4;
+	min-width: 100%;
+	overflow:auto;
+	max-height:65vh;
+}
+
+#p::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: none;
+	border-radius: 10px;
+}
+
+#p::-webkit-scrollbar
+{
+	width: 3%;
+	background-color: none;
+}
+
+#p::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-image: -webkit-gradient(linear,
+									   left bottom,
+									   left top,
+									   color-stop(0.44, #403e6d));
+}
+
+p
+{
+color: #f2e079;	
+min-width: 100%;
+font-size: 1.1rem;
+
+}
+
 /******************* footer ********************/
 #footer{
 	text-align: center;
-	background:#282749;
+	background:none;
 	width: 100%;
-	height: 100px;
+	height: 10%;
 	position: absolute;
 	bottom: 0;
+	color: #8986c5;
 
 	
 }
 
+.hide{
+	display: none !important;
+}
