@@ -11,13 +11,14 @@ include 'header.php';
 
         <div class="formulaire">             
                 <span>Transférer : </span> 
-                <form>
-                    <label for="file" class="label-file"> un fichier</label>
-                    <input id="file" class="input-file" type="file" multiple="" name="fichier"><br/>
-                    <label for="file-dossier" class="label-file">un dossier</label>
-                    <input id="file-dossier" class="input-file" tabindex="-1" type="file" multiple="" webkitdirectory="webkitdirectory" directory="directory" name="dossier">
+                <form method="post" action="index.php?page=envoi" enctype="multipart/form-data">
+                  <div class ="labels">
+                        <label for="file" class="label-file" onclick="reset()"> un fichier</label>
+                        <input required id="file" class="input-file" type="file" multiple="" name="fichier[]" ><br/>
+                  </div>      
+                    <label  class="transfer__button transfer__button--inactive" onclick="show_list()">Envoyer</label>
+                    <input type="submit" id="button" class="input-file" >
                 </form>        
-                <button type="submit" class="transfer__button transfer__button--inactive">Envoyer</button>
             </div>
  
 
@@ -26,7 +27,10 @@ include 'header.php';
 
 
     </div>
-
+    <div id="list_files" class="hide">
+    <span class ="title_list">Vos fichiers prêts à l'envoi</span>
+    <div id="p"></div>
+    </div>
 
 
 </div>
