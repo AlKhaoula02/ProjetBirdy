@@ -65,7 +65,7 @@ if (isset($_FILES['fichier'])) {
 }
 
 
-mail($destinataires, $sujet, $message);
+// mail($destinataires, $sujet, $message);
 echo "<html></html>" ;
 
 require('Views/envoiView.php');
