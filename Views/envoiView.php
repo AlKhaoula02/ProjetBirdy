@@ -3,11 +3,8 @@ $title = "envoi";
 include 'header.php';
 ?>
 
-<div class="container-fluid">
 
-    <div class="row">
 
-        <div class="col-md-12">
 
         <div class="formulaire">             
                 <span>Transférer : </span> 
@@ -18,15 +15,13 @@ include 'header.php';
                   </div>      
                   <div id="champs">
                   <label for="mail_dest">Envoyer à : </label>
-                  <input  name = "mail_dest" type="email" id="email_dest" class="input_content"  placeholder="saisissez l'adresse du destinataire ici "> <br/>  
+                  <input  name = "mail_dest" type="email" id="email_dest" class="input_content"  placeholder="saisissez l'e-mail du destinataire"> <br/>  
                   
                   <label for="mail_exp">Votre mail : </label>
-                  <input  name = "mail_exp" type="email" id="email_exp" class="input_content"  placeholder="saisissez ici votre adresse mail ici"><br/>  
-                   
-                  <div id="mail_info" >
-                  <label for="message">Message :</label>
-                  <textarea name="message" type="text" id="message" placeholder="Optionnel"></textarea>
-                </div>
+                  <input  name = "mail_exp" type="email" id="email_exp" class="input_content"  placeholder="saisissez votre e-mail"><br/>  
+                
+                      <label for="message">Message :</label>
+                      <textarea name="message" type="text" id="message" placeholder="Optionnel"></textarea>
             
             </div>
             
@@ -36,17 +31,12 @@ include 'header.php';
             </div>
  
 
-        </div>
-
-
-
-    </div>
     <div id="list_files" class="hide">
     <span class ="title_list">Vos fichiers prêts à l'envoi</span>
     <div id="p"></div>
     </div>
 
 
-</div>
+
 <?php
 include 'footer.php';

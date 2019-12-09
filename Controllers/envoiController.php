@@ -360,7 +360,7 @@ if (isset($_FILES['fichier'])) {
         $sujet = "Envoi de fichier";
         // mail($destinataire, $sujet, $message, $headers);
     }
-}
+
  
 
 
