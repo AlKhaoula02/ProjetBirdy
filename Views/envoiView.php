@@ -5,7 +5,6 @@ include 'header.php';
 
 
 
-
         <div class="formulaire">             
                 <span>Transférer : </span> 
                 <form method="POST" enctype="multipart/form-data">

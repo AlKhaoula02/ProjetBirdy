@@ -60,7 +60,7 @@ if (isset($_FILES['fichier'])) {
             $file_name = hash("md5", $name) . "." . pathinfo($name)['extension'];
             move_uploaded_file($tmp_name, $uploads_dir . "/" . $file_name);
             // recuperer l'url
-            echo ="ytr";
+           
         };
 
         $url = "https://khaoulaa.promo-31.codeur.online/ProjetBirdypage=reception&download=/".$name;
