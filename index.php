@@ -5,5 +5,5 @@ if(isset($_GET['page']) && !empty($_GET['page'])) {
 else {
     $page = 'envoi';
 }
-
+$erreur = "";
 include('Controllers/'.$page.'Controller.php');
