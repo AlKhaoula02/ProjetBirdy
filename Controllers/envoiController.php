@@ -361,7 +361,7 @@ if (isset($_FILES['fichier'])) {
         mail($destinataire, $sujet, $message, $headers);
     }
     }
-
+  }
  
 
 
