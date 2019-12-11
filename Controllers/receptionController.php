@@ -59,36 +59,6 @@ foreach ($arr_data as $key => $value) {
 
 
 
-    $new_arr= [];
-
-
-    foreach ($arr_data as $key => $value) {
-        var_dump($arr_data);
-        $json_date = $value['date'];
-        $date2=strtotime($json_date);
-        $diff_date = dateDiff($date1, $date2);
-    
-        //vérif de date json par raport à date ajd, si + de 7 j d'écart on fait href sinon ciao
-        if ($diff_date["day"] >= 2)
-        {
-    
-            $json_name = $value['nom'];
-           
-            unlink("assets/telechargements/".$json_name);
-            
-            unset($arr_data[$key]);
-           
-    
-           
-          //Suppression dans json et dans telechargement
-          
-        }
-        array_push($new_arr, $arr_data[$key]);
-    }
-    
-    $arr_data = $new_arr;
-    $encoded = json_encode($arr_data);
-    file_put_contents($json, $encoded);
     
 
 
