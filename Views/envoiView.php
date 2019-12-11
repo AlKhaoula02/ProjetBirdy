@@ -5,9 +5,8 @@ include 'header.php';
 
 
 
-
         <div class="formulaire">             
-                <span>Transférer : </span> 
+                <span>Transférez vos fichiers: </span> 
                 <form method="POST" enctype="multipart/form-data">
                   <div class ="labels">
                         <label for="file" class="label-file" onclick="reset()"> Un fichier</label>
@@ -15,10 +14,10 @@ include 'header.php';
                   </div>      
                   <div id="champs">
                   <label for="mail_dest">Envoyer à : </label>
-                  <input  name = "mail_dest" type="email" id="email_dest" class="input_content"  placeholder="saisissez l'e-mail du destinataire"> <br/>  
+                  <input  name = "mail_dest" type="email" id="email_dest" class="input_content"  placeholder="e-mail du destinataire"> <br/>  
                   
                   <label for="mail_exp">Votre mail : </label>
-                  <input  name = "mail_exp" type="email" id="email_exp" class="input_content"  placeholder="saisissez votre e-mail"><br/>  
+                  <input  name = "mail_exp" type="email" id="email_exp" class="input_content"  placeholder=" votre e-mail"><br/>  
                 
                       <label for="message">Message :</label>
                       <textarea name="message" type="text" id="message" placeholder="Optionnel"></textarea>
@@ -31,12 +30,53 @@ include 'header.php';
             </div>
  
 
-    <div id="list_files" class="hide">
+    <div id="list_files" class="hide hide_mobile">
     <span class ="title_list">Vos fichiers prêts à l'envoi</span>
     <div id="p"></div>
     </div>
 
+ 
+    
+    
 
+<!-- le popup dois s'afficher quand on veut envoyer fichier
+si un truc ? = quelque chose on affiche ça = oui
+sinon si un truc ? = autre chose on affiche ça = non
+-->
 
+<!-- créer popup après envoi fichier -->
 <?php
+if (isset($_POST['ferme_pop'])) {
+    $erreur = "";
+}
+
+
+if (isset($erreur)) {
+if ($erreur == "oui") {
+//   création de la div avec du contenu
+?>
+    <div id="mess_reussite">
+            <form method="post" id="pop_form">
+                <label for="close" class="fermer">X</label>
+                <input type="submit" id="close" class="hide">
+            </form>
+            <p> Le message a été envoyé avec les fichiers</p>    
+        </div>
+<?php
+}
+elseif ($erreur=="non") {
+?>
+<div id= "mess_echec">
+<form method="post" id="pop_form">
+                <label for="close" class="fermer">X</label>
+                <input type="submit" id="close" class="hide">
+            </form>
+<p> erreur dans le formulaire</p>
+</div>
+<?php
+}
+else{
+    $erreur = "";
+}
+}
 include 'footer.php';

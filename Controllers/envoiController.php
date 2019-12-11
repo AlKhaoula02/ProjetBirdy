@@ -76,24 +76,36 @@ if (isset($_POST["mail_dest"]) && !empty ($_POST["mail_dest"]) && isset($_POST["
             // récuperer le prochain Id a insérer
             $i_id = count($arr_data);
             $name = $_FILES['fichier']['name'][0];
+            $arr_name = explode(" ", $name);
+            $new_name = "";
+            $j = count($arr_name);
+            $g = $j-2;
+            for ($i=0; $i < $j; $i++) {
+            if ($i <= $g) {
+            $new_name .= $arr_name[$i]."_";
+            }
+            else{
+            $new_name .= $arr_name[$i];
+            }
+            }
             // Ajouter une nouvelle ligne dans ce tableau arr data
            
-            array_push($arr_data, ["id" => $i_id, "nom" => $name, "date" => $date]);
+            array_push($arr_data, ["id" => $i_id, "nom" =>  $new_name, "date" => $date]);
             
             $encoded = json_encode($arr_data);
             file_put_contents($json, $encoded);
             // mettre le fichier dans le bon repertoire
             $tmp_name = $_FILES["fichier"]["tmp_name"][0];
             
-            $file_name = hash("md5", $name) . "." . pathinfo($name)['extension'];
+            $file_name = hash("md5",  $new_name) . "." . pathinfo( $new_name)['extension'];
             move_uploaded_file($tmp_name, $uploads_dir . "/" . $file_name);
             // recuperer l'url
         
-        };
+        }
 
       }
 
-        $url = "https://khaoulaa.promo-31.codeur.online/ProjetBirdypage=reception&download=/".$name;
+        $url = "https://khaoulaa.promo-31.codeur.online/ProjetBirdy/?page=reception&download=/". $new_name;
        
         // On filtre les serveurs qui présentent des bogues.
         if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $destinataire)) 
@@ -421,14 +433,14 @@ if (isset($_POST["mail_dest"]) && !empty ($_POST["mail_dest"]) && isset($_POST["
                 $message.= $passage_ligne."--".$boundary.$passage_ligne;
 
 
-                mail($destinataire, $sujet, $message, $header);
+               mail($destinataire, $sujet, $message, $header);
     
     }
-  }
-  else{
+  }else{
     $erreur="non";
   }
 }
+
  
 
 

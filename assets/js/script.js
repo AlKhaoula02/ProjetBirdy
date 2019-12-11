@@ -28,4 +28,16 @@ document.getElementById('file').onchange=function(){
         }
     };
 
+let formulaire = document.getElementsByClassName('formulaire');
+let message_oui = document.getElementById('mess_reussite');
+let message_non = document.getElementsById('mess_echec');
+if (typeof message_oui != "undefined") {
+    formulaire.classList.add("blur");
+}
+if (typeof message_non != "undefined") {
+    formulaire.classList.add("blur");
+} else {
+    formulaire.classList.remove("blur");
+}
+
 
