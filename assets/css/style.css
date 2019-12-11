@@ -50,7 +50,8 @@ table {
 
 a{
 	text-decoration: none;
-	outline:none
+	outline:none;
+	color: black;
 }
 
 input, textarea{
@@ -242,9 +243,9 @@ align-self: center;
 	height:35vh;
 	margin:auto;
 	padding: 40px;
-    background-color:#282749;
+    background-color:#748cbb;
     border-color: gray;
-    border: 1px solid #282749;
+    border: 1px solid #7565EB;
     border-radius: 7px;
 	opacity: 0.91;
 	font-family: 'Rosario', sans-serif;
@@ -261,8 +262,9 @@ grid-row: 2/3;
 font-size: 1.1rem !important;
 font-family: 'Rosario', sans-serif;
 border-radius: 5px ;
-border : none;
-background: linear-gradient( to bottom left, #8b2e83, #c27abc );
+background: linear-gradient( to bottom left, #3833ce,#739cee  );
+border: 1px #3833ce;
+box-shadow: 1px 1px 5px #3833ce;
 padding:  0 20%;
 text-align:center;
 justify-self: center;
@@ -536,8 +538,7 @@ grid-row: 2/3;
 font-size: 1.1rem !important;
 font-family: 'Rosario', sans-serif;
 border-radius: 5px ;
-border : none;
-background: linear-gradient( to bottom left, #8b2e83, #c27abc );
+
 padding:  0 20%;
 }
 
