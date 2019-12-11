@@ -13,8 +13,8 @@
 
 </head>
 
-<body id= "body">
-
+<body class="nuage">
+<div id= "body">
     <header id="header" class="">
-    <h1><img src="assets/img/logo-birdy.png" alt="logo du site"></h1>
+    <h1><img src="assets/img/logo.png" alt="logo du site"></h1>
     </header>

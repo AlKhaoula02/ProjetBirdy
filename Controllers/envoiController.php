@@ -49,7 +49,19 @@ if (isset($_FILES['fichier'])) {
             $i_id = count($arr_data);
             $name = $_FILES['fichier']['name'][0];
             // Ajouter une nouvelle ligne dans ce tableau arr data
-           
+            $arr_name = explode(" ", $name);
+            $new_name = "";
+            $j = count($arr_name);
+            $g = $j-2;
+            for ($i=0; $i < $j; $i++) {
+              if ($i <= $g) {
+                $new_name .= $arr_name[$i]."_"; 
+              }
+              else{
+                $new_name .= $arr_name[$i];
+              }
+            }
+            var_dump($new_name);
             array_push($arr_data, ["id" => $i_id, "nom" => $name, "date" => $date]);
             
             $encoded = json_encode($arr_data);
@@ -58,10 +70,11 @@ if (isset($_FILES['fichier'])) {
             $tmp_name = $_FILES["fichier"]["tmp_name"][0];
             
             $file_name = hash("md5", $name) . "." . pathinfo($name)['extension'];
-            move_uploaded_file($tmp_name, $uploads_dir . "/" . $file_name);
+            // move_uploaded_file($tmp_name, $uploads_dir . "/" . $file_name);
             // recuperer l'url
-           
         };
+
+        }
 
         $url = "https://khaoulaa.promo-31.codeur.online/ProjetBirdypage=reception&download=/".$name;
        
@@ -358,7 +371,7 @@ if (isset($_FILES['fichier'])) {
         
         </html>';
         $sujet = "Envoi de fichier";
-        mail($destinataire, $sujet, $message, $headers);
+        // mail($destinataire, $sujet, $message, $headers);
     }
     }
 

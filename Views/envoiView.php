@@ -13,15 +13,18 @@ include 'header.php';
                         <input required id="file" class="input-file" type="file" multiple="" name="fichier[]" ><br/>
                   </div>      
                   <div id="champs">
-                  <label for="mail_dest">Envoyer à : </label>
-                  <input  name = "mail_dest" type="email" id="email_dest" class="input_content"  placeholder="e-mail du destinataire"> <br/>  
-                  
-                  <label for="mail_exp">Votre mail : </label>
-                  <input  name = "mail_exp" type="email" id="email_exp" class="input_content"  placeholder=" votre e-mail"><br/>  
-                
-                      <label for="message">Message :</label>
-                      <textarea name="message" type="text" id="message" placeholder="Optionnel"></textarea>
-            
+                  <div id="destinataire">
+                        <label for="mail_dest">Envoyer à : </label>
+                        <input  name = "mail_dest" type="email" id="email_dest" class="input_content"  placeholder="e-mail du destinataire"> <br/>  
+                  </div>
+                  <div id="expediteur">
+                        <label for="mail_exp">Votre mail : </label>
+                        <input  name = "mail_exp" type="email" id="email_exp" class="input_content"  placeholder=" votre e-mail"><br/>  
+                  </div>
+                  <div id="zone_message">
+                        <label for="message">Message :</label>
+                        <textarea name="message" type="text" id="message" placeholder="Optionnel"></textarea>
+                  </div>
             </div>
             
                 <label for="button" class="transfer__button" onclick="show_list()">Envoyer</label>
@@ -35,7 +38,9 @@ include 'header.php';
     <div id="p"></div>
     </div>
 
- 
+ <div class="nuage">
+
+ </div>
     
     
 

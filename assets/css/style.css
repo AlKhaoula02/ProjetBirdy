@@ -29,6 +29,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	width: 100vw;
+	height: 100vh;
 }
 ol, ul {
 	list-style: none;
@@ -102,15 +104,16 @@ height: 40%;
 	height:70vh;
 	margin:auto;
 	padding: 25px;
-    background-color:#282749;
+    background-color:#748cbb;
     border-color: gray;
-    border: 1px solid #282749;
+    border: 1px solid #7565EB;
     border-radius: 7px;
-	opacity: 0.91;
+	opacity: 0.8;
 	font-family: 'Rosario', sans-serif;
 	font-size: 1.3rem !important;
 	line-height: 2.5;
-	box-shadow: 2px -2px 2px #f2e079 ;
+	box-shadow: 3px -3px 3px #f2e079 
+	;
 }
 .blur
 {
@@ -122,26 +125,27 @@ grid-column: 1/4;
 grid-row: 1/2;
 align-self: center;
 justify-self: center;
-color: #c27abc ;
-
+color:black ;
 font-weight:bold;
 }
 
 
 form
 {
+width: 100%;	
 display: grid;
 grid-template-columns: repeat(3,1fr);
 grid-template-rows:  repeat(7,1fr);
 grid-column: 1/4;
 grid-row: 2/8;
+
 }
 
 .label-file
  {
 cursor: pointer;
-color: #f2e079;
-border: solid 1px  #f2e079 ;
+color: #f5bd07;
+border: solid 1px  #f5bd07;;
 margin: 15px 30px;
 border-radius: 5px;
 padding: 0 10px;
@@ -167,33 +171,44 @@ border: solid 1px #887e09;
 #champs
 {
 grid-column: 1/4;
-grid-row: 2/7 ;
+grid-row: 2/6 ;
 font-size: 1.1rem;
-color:#f2e079 ;
-width:100%;
+font-weight: bold;
+color: #f5bd07; 
+width:80%;
 justify-self: center;
+position: relative;
+top: 10%;
 }
+
+#destinataire,#expediteur,#mail_info
+{
+line-height: 2;
+}
+
+#destinataire input, #expediteur input, textarea
+{
+width: 100%;
+justify-self: center;
+
+border:none;
+box-shadow: 2px 2px 10px #3833ce ;
+}
+
 
 .input_content
 {
-	width: 75%;
-	height: 10%;
-	margin:5px;
+	width: 57%;
+	height: 7%;
 	text-align: center;
+	background-color: #dbdfe6;
 }
 
-
-#mail_info
-{
-	grid-column: 1/4 ;
-	grid-row: 4/6;
-}
 textarea
 {
 resize: none;
-width: 100%;
-height: 30%;
-margin:5px;
+height: 10vh;
+background-color: #dbdfe6;
 }
 
 .transfer__button 
@@ -204,7 +219,9 @@ font-size: 1.1rem !important;
 font-family: 'Rosario', sans-serif;
 border-radius: 5px ;
 border : none;
-background: linear-gradient( to bottom left, #8b2e83, #c27abc );
+background: linear-gradient( to bottom left, #3833ce,#739cee  );
+border: 1px #3833ce;
+box-shadow: 1px 1px 5px #3833ce;
 padding:  0 20%;
 text-align:center;
 justify-self: center;
@@ -225,15 +242,14 @@ align-self: center;
 	max-height : auto;
 	margin:auto;
 	padding: 25px;
-    background-color:#282749;
-    border-color: gray;
-    border: 1px solid #282749;
+	background-color:#748cbb;
+    border: 1px solid #7565EB;
     border-radius: 7px;
-	opacity: 0.91;
+	opacity: 0.8;
 	font-family: 'Rosario', sans-serif;
 	font-size: 1.3rem !important;
 	line-height: 2.5;
-	box-shadow: 2px -2px 2px #f2e079 ;	
+	box-shadow: 3px -3px 3px #f2e079 ;	
 	position: fixed;
 	top:10%;
 	right:5%;
@@ -253,6 +269,7 @@ align-self: center;
 	min-width: 100%;
 	overflow:auto;
 	max-height:65vh;
+	color: #f6cb2d;
 }
 
 #p::-webkit-scrollbar-track
@@ -276,10 +293,14 @@ align-self: center;
 									   left top,
 									   color-stop(0.44, #403e6d));
 }
-
 p
 {
-color: #f2e079;	
+color: #f6cb2d;
+}
+
+#copyright
+{
+color: black;	
 min-width: 100%;
 font-size: 1.1rem;
 
@@ -293,7 +314,7 @@ font-size: 1.1rem;
 	height: 10%;
 	position: absolute;
 	bottom: 0;
-	color: #8986c5;
+	color:black !important;
 
 	
 }
@@ -314,7 +335,7 @@ z-index: 200;
 align-self: center;
 width: 25%;
 height :20%;
-background-color:#282749;
+background-color:#748cbb;
 border-radius:7px ;
 box-shadow: 2px -2px 2px #f2e079 ;
 display: flex;
@@ -325,18 +346,37 @@ align-items: center;
 }
 #mess_reussite > p, #mess_echec p
 {
-	color:#c27abc !important;
+background: linear-gradient( to bottom left, #3833ce,#739cee  );
+border: 1px #3833ce;
+box-shadow: 1px 1px 5px #3833ce;
 	text-align: center;
 
 	
 }
 .fermer
 {
-color:#c27abc !important;
+background: linear-gradient( to bottom left, #3833ce,#739cee  );
+border: 1px #3833ce;
+box-shadow: 1px 1px 5px #3833ce;
 position: absolute;
 top:10% ;
 right:5% ;
 }
+
+/*************************** nuage ******************************/
+
+.nuage{
+	background: url(../img/montagne_bleuesombre2.jpg) round no-repeat;
+	background-size: cover;
+	opacity: 80%;
+	/* color:  #7faef5; */
+}
+
+#body{
+	position: relative;
+	z-index: 900;
+}
+
 /****************** version responsive*********************/
 @media screen and (max-width: 959px){
 
@@ -365,17 +405,19 @@ img
 height: 100%;
 width: auto;
 display: flex;
+
 justify-content: center;
 align-content: center;
 }
 
 .formulaire
 {
+position: relative;
 min-width:65%;
-height:76vh;
+height:75vh;
 margin: 0 auto;
 padding: 0 25px;
-top: 30px;
+top: 5%;
 }
 
 span
@@ -427,13 +469,15 @@ margin:0px;
 .transfer__button 
 {
 grid-column:2/3;
-grid-row: 7/8;
+grid-row: 6/7;
 font-size: 1.1rem !important;
 font-family: 'Rosario', sans-serif;
 border-radius: 5px ;
 border : none;
 height:65% ;
-background: linear-gradient( to bottom left, #8b2e83, #c27abc );
+background: linear-gradient( to bottom left, #3833ce,#739cee  );
+border: 1px #3833ce;
+box-shadow: 1px 1px 5px #3833ce;
 padding:  0 20%;
 }
 
@@ -482,7 +526,11 @@ height :30%;
 line-height: 2rem;
 }
 
- 	
+.nuage{
+	background: url(../img/montagne_bleuesombre2.jpg) round ;
+	background-size: cover;
+	opacity: 80%;
+	/* color:  #7faef5; */
  
 
 }
