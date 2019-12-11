@@ -457,10 +457,13 @@ if (isset($_POST["mail_dest"]) && !empty ($_POST["mail_dest"]) && isset($_POST["
                mail($destinataire, $sujet, $message, $header);
     
     }
+  
   }else{
     $erreur="non";
+
   }
-}
+
+
 
  
 

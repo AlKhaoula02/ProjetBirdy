@@ -53,7 +53,6 @@ foreach ($arr_data as $key => $value) {
         unset($arr_data[$key]);
         $arr_data = array_values($arr_data);
        
-
        
       //Suppression dans json et dans telechargement
       

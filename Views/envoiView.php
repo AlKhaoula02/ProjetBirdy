@@ -74,7 +74,7 @@ elseif ($erreur=="non") {
 <div id= "mess_echec">
 <form method="post" id="pop_form">
                 <label for="close" class="fermer">X</label>
-                <input type="submit" id="close" class="hide">
+                <input name="ferme_pop" type="submit" id="close" class="hide">
             </form>
 <p> erreur dans le formulaire</p>
 </div>
