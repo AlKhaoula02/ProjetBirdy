@@ -6,7 +6,7 @@ include 'header.php';
 
 
         <div class="formulaire">             
-                <span>Transférer : </span> 
+                <span>Transférez vos fichiers: </span> 
                 <form method="POST" enctype="multipart/form-data">
                   <div class ="labels">
                         <label for="file" class="label-file" onclick="reset()"> Un fichier</label>
@@ -52,7 +52,7 @@ sinon si un truc ? = autre chose on affiche ça = non
 <!-- créer popup après envoi fichier -->
 <?php
 if (isset($_POST['ferme_pop'])) {
-    echo "je ferme";
+    $erreur = "";
 }
 
 

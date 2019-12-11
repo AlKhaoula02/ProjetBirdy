@@ -1,32 +1,59 @@
 <?php
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require('Models/envoi.php');
 
 $error = "";
 $uploads_dir = './assets/telechargements/';
 
 
-if (isset($_FILES['fichier'])) {
-    $zip = new ZipArchive(); //Variable de zippage
-    // Récuperer données du formulaire
-    for ($i = 0; $i < count($_FILES['fichier']['tmp_name']); $i++) {
+if (isset($_POST["mail_dest"]) && !empty ($_POST["mail_dest"]) && isset($_POST["mail_exp"]) && !empty ($_POST["mail_exp"]))
+{
+ 
+  $destinataire = $_POST["mail_dest"];
+  $expediteur = $_POST["mail_exp"];
+  
+  if (
+    preg_match("/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/",$destinataire) && preg_match("/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/",$expediteur)
+   )   
+  {
+    
+    $erreur="oui";
+
+        if (isset($_FILES['fichier'])) 
+    {
+
+        $zip = new ZipArchive(); //Variable de zippage
+        // Récuperer données du formulaire
+        for ($i = 0; $i < count($_FILES['fichier']['tmp_name']); $i++) 
+      {
 
         // Si plus de 1 fichier
-        if (count($_FILES['fichier']['tmp_name']) > 1) {
+        if (count($_FILES['fichier']['tmp_name']) > 1) 
+        {
             $zip_name = "upload_" . time() . ".zip";
             // creer le zip
-            if ($zip->open($uploads_dir . $zip_name, ZipArchive::CREATE) !== TRUE) {
+            if ($zip->open($uploads_dir . $zip_name, ZipArchive::CREATE) !== TRUE) 
+            {
                 $error = "Désolé, le  Zip n'a pas été généré.<br/>";
             };
             // recuperer le zip
+            
             $zip->addFromString($_FILES['fichier']['name'][$i], file_get_contents($_FILES['fichier']['tmp_name'][$i]));
             $zip->close();
-            $success = basename($zip_name);
 
+            $success = basename($zip_name);
+            // var_dump(realpath("./assets/telechargements/".$success));
             //ajout du zip au json
             $date =  date("Y-m-d");
             // récuperer le fichier  json dans la variable
-            $json = "data.json";
+            $json = "./data.json";
             $jsondata = file_get_contents($json);
+            
             // convertir en tableau et l'afficher
             $arr_data = json_decode($jsondata, true);
             // récuperer le prochain Id a insérer
@@ -38,7 +65,8 @@ if (isset($_FILES['fichier'])) {
             file_put_contents($json, $encoded);
             $name = $zip_name;
         }
-        else if (count($_FILES['fichier']['name']) == 1) {
+        else if (count($_FILES['fichier']['name']) == 1) 
+        {
             $date =  date("Y-m-d");
             // récuperer le fichier  json dans la variable
             $json = "data.json";
@@ -48,6 +76,18 @@ if (isset($_FILES['fichier'])) {
             // récuperer le prochain Id a insérer
             $i_id = count($arr_data);
             $name = $_FILES['fichier']['name'][0];
+            $arr_name = explode(" ", $name);
+            $new_name = "";
+            $j = count($arr_name);
+            $g = $j-2;
+            for ($i=0; $i < $j; $i++) {
+            if ($i <= $g) {
+            $new_name .= $arr_name[$i]."_";
+            }
+            else{
+            $new_name .= $arr_name[$i];
+            }
+            }
             // Ajouter une nouvelle ligne dans ce tableau arr data
             $arr_name = explode(" ", $name);
             $new_name = "";
@@ -62,31 +102,44 @@ if (isset($_FILES['fichier'])) {
               }
             }
             var_dump($new_name);
-            array_push($arr_data, ["id" => $i_id, "nom" => $name, "date" => $date]);
+           
+            array_push($arr_data, ["id" => $i_id, "nom" =>  $new_name, "date" => $date]);
             
             $encoded = json_encode($arr_data);
             file_put_contents($json, $encoded);
             // mettre le fichier dans le bon repertoire
             $tmp_name = $_FILES["fichier"]["tmp_name"][0];
             
-            $file_name = hash("md5", $name) . "." . pathinfo($name)['extension'];
             // move_uploaded_file($tmp_name, $uploads_dir . "/" . $file_name);
             // recuperer l'url
+            if (isset($_POST["mail_dest"])){
+              $file_name = hash("md5",  $new_name) . "." . pathinfo( $new_name)['extension'];
+              move_uploaded_file($tmp_name, $uploads_dir . "/" . $file_name);
+              // recuperer l'url
+          
+          }
         };
 
         }
 
-        $url = "https://khaoulaa.promo-31.codeur.online/ProjetBirdypage=reception&download=/".$name;
-       
-        // preparer le mail
-        if (isset($_POST["mail_dest"])){
 
-        $destinataire = $_POST["mail_dest"];
-        $expediteur = $_POST["mail_exp"];
-        $message_user = $_POST["message"];
-        $headers = 'From:'. $expediteur."\r\n".'Reply-To:'. $expediteur;
-        $message = $message_user.
-        '<!doctype html>
+
+      }
+
+        $url = "https://khaoulaa.promo-31.codeur.online/ProjetBirdy/?page=reception&download=/". $new_name;
+       
+        // On filtre les serveurs qui présentent des bogues.
+        if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $destinataire)) 
+        {
+        $passage_ligne = "\r\n";
+        }
+        else {
+       $passage_ligne = "\n";
+        }
+        
+        $header = 'From:'. $expediteur."\r\n".'Reply-To:'. $expediteur;
+        $message_txt=$_POST["message"];
+        $message_html = '<!doctype html>
         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
         
         <head>
@@ -329,7 +382,7 @@ if (isset($_FILES['fichier'])) {
                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
                                 <tbody>
                                   <tr>
-                                    <td style="width:600px;"> <img alt="bottom border" height="auto" src="http://nimus.de/share/tpl-card/bottom.png" style="border:none;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="600" /> </td>
+                                   
                                   </tr>
                                 </tbody>
                               </table>
@@ -370,13 +423,48 @@ if (isset($_FILES['fichier'])) {
         </body>
         
         </html>';
-        $sujet = "Envoi de fichier";
-        // mail($destinataire, $sujet, $message, $headers);
+
+      
+     //=====Création de la boundary.
+                $boundary = "-----=".md5(rand());
+                $boundary_alt = "-----=".md5(rand());
+                //=====Définition du sujet.
+                $sujet = $_POST['message'];
+                //=====Création du header de l'e-mail.
+                $header = "From:".$expediteur . " ". $passage_ligne;
+                $header.= "Reply-to: ".$destinataire.$passage_ligne;
+                $header.= "MIME-Version: 1.0".$passage_ligne;
+                $header.= "Content-Type: multipart/mixed;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
+                //=====Création du message.
+                $message = $passage_ligne."--".$boundary.$passage_ligne;
+                $message.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary_alt\"".$passage_ligne;
+                $message.= $passage_ligne."--".$boundary_alt.$passage_ligne;
+                //=====Ajout du message au format texte.
+                $message.= "Content-Type: text/plain; charset=\"ISO-8859-1\"".$passage_ligne;
+                $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
+                $message.= $passage_ligne.$message_txt.$passage_ligne;
+                $message.= $passage_ligne."--".$boundary_alt.$passage_ligne;
+                //=====Ajout du message au format HTML.
+                $message.= "Content-Type: text/html; charset=\"ISO-8859-1\"".$passage_ligne;
+                $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
+                $message.= $passage_ligne.$message_html.$passage_ligne;
+                //=====On ferme la boundary alternative.
+                $message.= $passage_ligne."--".$boundary_alt."--".$passage_ligne;
+                //==========
+                $message.= $passage_ligne."--".$boundary.$passage_ligne;
+
+
+               mail($destinataire, $sujet, $message, $header);
+    
     }
-    }
+  }else{
+    $erreur="non";
+  }
+}
 
  
 
 
 
 require('Views/envoiView.php');
+
