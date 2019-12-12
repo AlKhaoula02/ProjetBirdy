@@ -5,8 +5,7 @@ include 'header.php';
 
 
 
-
-        <div class="formulaire">             
+        <div id="formulaire">             
                 <span>Ajoutez vos fichiers et indiquez l'adresse à laquelle les envoyer </span> 
                 <form method="POST" enctype="multipart/form-data">
                   <div class ="labels">

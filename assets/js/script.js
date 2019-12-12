@@ -28,16 +28,19 @@ document.getElementById('file').onchange=function(){
         }
     };
 
-let formulaire = document.getElementsByClassName('formulaire');
+let formulaire = document.getElementById('formulaire');
 let message_oui = document.getElementById('mess_reussite');
-let message_non = document.getElementsById('mess_echec');
+let message_non = document.getElementById('mess_echec');
 if (typeof message_oui != "undefined") {
     formulaire.classList.add("blur");
 }
 if (typeof message_non != "undefined") {
     formulaire.classList.add("blur");
-} else {
+} if (message_oui == null  && message_non == null) {
     formulaire.classList.remove("blur");
 }
+
+console.log(message_oui);
+console.log(message_non);
 
 
