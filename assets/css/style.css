@@ -113,8 +113,8 @@ height: 40%;
 	font-family: 'Rosario', sans-serif;
 	font-size: 1.3rem !important;
 	line-height: 2.5;
-	box-shadow: 3px -3px 3px #f2e079 
-	;
+	box-shadow: 3px -3px 3px #f2e079 ;
+	
 }
 .blur
 {
@@ -128,6 +128,8 @@ align-self: center;
 justify-self: center;
 color:black ;
 font-weight:bold;
+align-content: center;
+text-align: center;
 }
 
 
@@ -240,7 +242,7 @@ align-self: center;
 	grid-template-columns: repeat(3,1fr);
 	grid-template-rows:  repeat(2,1fr);
 	width: 25%;
-	height:35vh;
+	height:30vh;
 	margin:auto;
 	padding: 40px;
     background-color:#748cbb;
@@ -383,19 +385,16 @@ border-radius:7px ;
 box-shadow: 2px -2px 2px #f2e079 ;
 display: flex;
 align-items: center;
+justify-content: center;
 }
 #mess_reussite > p, #mess_echec p
 {
-background: linear-gradient( to bottom left, #3833ce,#739cee  );
-border: 1px #3833ce;
-box-shadow: 1px 1px 5px #3833ce;
 	text-align: center;
+	position: absolute;
+	justify-self: center;
 }
 .fermer
 {
-background: linear-gradient( to bottom left, #3833ce,#739cee  );
-border: 1px #3833ce;
-box-shadow: 1px 1px 5px #3833ce;
 position: absolute;
 top:10% ;
 right:5% ;

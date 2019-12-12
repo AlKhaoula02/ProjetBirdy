@@ -5,8 +5,9 @@ include 'header.php';
 
 
 
+
         <div class="formulaire">             
-                <span>Transférez vos fichiers: </span> 
+                <span>Ajoutez vos fichiers et indiquez l'adresse à laquelle les envoyer </span> 
                 <form method="POST" enctype="multipart/form-data">
                   <div class ="labels">
                         <label for="file" class="label-file" onclick="reset()"> Un fichier</label>
@@ -65,7 +66,8 @@ if ($erreur == "oui") {
                 <label for="close" class="fermer">X</label>
                 <input type="submit" id="close" class="hide">
             </form>
-            <p> Le message a été envoyé avec les fichiers</p>    
+            <p> Le message a été envoyé avec les fichiers</p>
+               
         </div>
 <?php
 }

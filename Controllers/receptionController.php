@@ -1,8 +1,7 @@
 <?php
 require('Models/reception.php');
 
-//  $getNomJson = $_GET["download"];
-$nomJ = "upload_1575918961.zip";
+  $getNomJson = $_GET["download"];
 //date du jour
 $date_auj = date("Y-m-d");
 // recup des dates en secondes
@@ -41,7 +40,9 @@ $arr_data = json_decode($json_data, true);
 foreach ($arr_data as $key => $value) {
     $json_name = $value['nom'];
     $json_date = $value['date'];
-    if ( $nomJ ==  $json_name ) {
+
+    if ( $getNomJson ==  $json_name ) {
+        
         $date2=strtotime($json_date);
         $diff_date = dateDiff($date1, $date2);
         //vérif de date json par raport à date ajd, si - de 7 j d'écart on fait href sinon ciao
@@ -49,7 +50,7 @@ foreach ($arr_data as $key => $value) {
         {
      
 //création url telechargement
-        $href = "assets/telechargement/".$nomJ;   
+        $href = "assets/telechargements/".$getNomJson;   
     }
         
 

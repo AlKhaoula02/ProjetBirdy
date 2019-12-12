@@ -26,7 +26,7 @@ if (isset($_POST["mail_dest"]) && !empty ($_POST["mail_dest"]) && isset($_POST["
 
         if (isset($_FILES['fichier'])) 
     {
-
+      $url_name = "";
         $zip = new ZipArchive(); //Variable de zippage
         // Récuperer données du formulaire
         for ($i = 0; $i < count($_FILES['fichier']['tmp_name']); $i++) 
@@ -63,7 +63,7 @@ if (isset($_POST["mail_dest"]) && !empty ($_POST["mail_dest"]) && isset($_POST["
             array_push($arr_data, ["id" => $i_id, "nom" => $zip_name, "date" => $date]);
             $encoded = json_encode($arr_data);
             file_put_contents($json, $encoded);
-            $name = $zip_name;
+            $url_name = $zip_name;
         }
         else if (count($_FILES['fichier']['name']) == 1) 
         {
@@ -88,22 +88,10 @@ if (isset($_POST["mail_dest"]) && !empty ($_POST["mail_dest"]) && isset($_POST["
             $new_name .= $arr_name[$i];
             }
             }
-            // Ajouter une nouvelle ligne dans ce tableau arr data
-            $arr_name = explode(" ", $name);
-            $new_name = "";
-            $j = count($arr_name);
-            $g = $j-2;
-            for ($i=0; $i < $j; $i++) {
-              if ($i <= $g) {
-                $new_name .= $arr_name[$i]."_"; 
-              }
-              else{
-                $new_name .= $arr_name[$i];
-              }
-            }
-            var_dump($new_name);
+            $file_name = hash("md5",  $new_name) . "." . pathinfo( $new_name)['extension'];
+
            
-            array_push($arr_data, ["id" => $i_id, "nom" =>  $new_name, "date" => $date]);
+            array_push($arr_data, ["id" => $i_id, "nom" =>  $file_name, "date" => $date]);
             
             $encoded = json_encode($arr_data);
             file_put_contents($json, $encoded);
@@ -114,19 +102,20 @@ if (isset($_POST["mail_dest"]) && !empty ($_POST["mail_dest"]) && isset($_POST["
             // recuperer l'url
             if (isset($_POST["mail_dest"])){
               $file_name = hash("md5",  $new_name) . "." . pathinfo( $new_name)['extension'];
+              $url_name = $file_name;
               move_uploaded_file($tmp_name, $uploads_dir . "/" . $file_name);
               // recuperer l'url
           
           }
-        };
-
         }
-
-
 
       }
 
-        $url = "https://khaoulaa.promo-31.codeur.online/ProjetBirdy/?page=reception&download=/". $new_name;
+
+
+      
+
+        $url = "https://khaoulaa.promo-31.codeur.online/ProjetBirdy/?page=reception&download=". $url_name;
        
         // On filtre les serveurs qui présentent des bogues.
         if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $destinataire)) 
@@ -462,7 +451,7 @@ if (isset($_POST["mail_dest"]) && !empty ($_POST["mail_dest"]) && isset($_POST["
     $erreur="non";
 
   }
-
+}
 
 
  
